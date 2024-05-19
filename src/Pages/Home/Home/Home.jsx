@@ -7,6 +7,7 @@ import banner from "../../../assets/home/banner.jpg";
 import { useEffect, useState } from "react";
 import MenuItem from "../../../Component/MenuItem";
 import CategorySection from "../../../Component/CategorySection";
+import Testimonial from "../../../Component/Testimonial";
 
 const Home = () => {
   const [menu, setMenu] = useState([]);
@@ -122,6 +123,19 @@ const Home = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* testimonial */}
+
+      <section>
+        <Title
+          headign="Testimonial"
+          subHeading="What Our Client Say"
+        ></Title>
+
+        <div className="my-10">
+            <Testimonial></Testimonial>
         </div>
       </section>
     </div>
