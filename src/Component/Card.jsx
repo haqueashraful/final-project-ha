@@ -1,7 +1,8 @@
-const ItemCard = ({ item }) => {
-  const { _id, name, recipe, image, category, price } = item;
-  return (
-    <div>
+
+const Card = ({ item }) => {
+    const { _id, name, recipe, image, category, price } = item;
+    return (
+        <div>
       <div className="w-full overflow-hidden bg-[#F3F3F3]">
         <img className="object-cover w-full" src={image} alt={name} />
       </div>
@@ -10,12 +11,12 @@ const ItemCard = ({ item }) => {
         <p>{recipe}</p>
         <div className="text-center">
           <button className="border-b-4 text-[#BB8506] border-[#BB8506] rounded-md px-5 py-2 hover:bg-black font-semibold">
-            View Full Menu
+           add to cart
           </button>
         </div>
       </div>
     </div>
-  );
+    );
 };
 
-export default ItemCard;
+export default Card;

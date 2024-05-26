@@ -3,10 +3,9 @@ const MenuCard = ({ item }) => {
   const { name, recipe, image, price } = item;
   return (
     <div className="flex items-start justify-between gap-5">
-      <div>
+      <div className="w-24 h-24 overflow-hidden" style={{ borderRadius: " 0px 200px 200px 200px",}}>
         <img
-          className="w-24 h-24 overflow-hidden"
-          style={{ objectFit: "cover", borderRadius: " 0px 200px 200px 200px", width: "100%" }}
+          style={{ objectFit: "cover", width: "100%", height: "100%" }}
           src={image}
           alt={name}
         />

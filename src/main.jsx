@@ -5,9 +5,12 @@ import {RouterProvider } from 'react-router-dom'
 import Router from './Routes/Router.jsx'
 import "swiper/css";
 import "swiper/css/pagination";
+import { HelmetProvider } from 'react-helmet-async'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <HelmetProvider>
     <RouterProvider router={Router} />
+    </HelmetProvider>
   </React.StrictMode>,
 )

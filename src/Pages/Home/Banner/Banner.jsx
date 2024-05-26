@@ -13,27 +13,21 @@ const Banner = () => {
       <Carousel autoPlay>
         <div>
           <img  alt="" src={img1} />
-          <p className="legend">Legend 1</p>
         </div>
         <div>
           <img alt="" src={img2} />
-          <p className="legend">Legend 1</p>
         </div>
         <div>
           <img alt="" src={img3} />
-          <p className="legend">Legend 1</p>
         </div>
         <div>
           <img alt="" src={img4} />
-          <p className="legend">Legend 1</p>
         </div>
         <div>
           <img alt="" src={img5} />
-          <p className="legend">Legend 1</p>
         </div>
         <div>
           <img alt="" src={img6} />
-          <p className="legend">Legend 1</p>
         </div>
       </Carousel>
     </div>

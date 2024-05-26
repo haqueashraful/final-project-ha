@@ -8,16 +8,12 @@ import { useEffect, useState } from "react";
 import MenuItem from "../../../Component/MenuItem";
 import CategorySection from "../../../Component/CategorySection";
 import Testimonial from "../../../Component/Testimonial";
+import useMenu from "../../../Hooks/useMenu";
 
 const Home = () => {
-  const [menu, setMenu] = useState([]);
-  console.log(menu);
-  useEffect(() => {
-    fetch("menu.json")
-      .then((res) => res.json())
-      .then((data) => setMenu(data));
-  }, []);
 
+
+  const [menu] = useMenu();
   const popular = menu.filter((item) => item.category === "popular");
   const sliced = menu.slice(0, 3);
   return (
