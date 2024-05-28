@@ -3,9 +3,13 @@ import bg from "../assets/others/authentication.png";
 import log from "../assets/others/authentication2.png";
 import useAuth from "../Hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
+import SocialLogin from "../Component/SocialLogin";
 const Register = () => {
   const {registerUser, profileUpdate} = useAuth();
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
 
   const handleRegister = (e) => {
@@ -21,7 +25,18 @@ const Register = () => {
       const user = result.user;
       console.log(user)
       profileUpdate(name, image)
-      navigate('/')
+      axiosPublic.post('/users', {name, email, role : "user"})
+      .then(() => {
+        form.reset();
+        navigate('/')
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'User created successfully',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      })
     })
     .catch(error => {
       console.log(error)
@@ -29,6 +44,7 @@ const Register = () => {
 
     console.log(name, email, password);
   };
+
   return (
     <div
       className="w-full min-h-screen p-28 overflow-hidden"
@@ -108,18 +124,7 @@ const Register = () => {
 
           <div className="text-center my-4 space-y-4">
             <p>Or sign in with</p>
-
-            <ul className="flex justify-center items-center gap-5">
-                <li>
-                    <FaGoogle className="text-3xl"/>
-                </li>
-                <li>
-                    <FaFacebook className="text-3xl"/>
-                </li>
-                <li>
-                    <FaGithub className="text-3xl"/>
-                </li>
-            </ul>
+            <SocialLogin />
           </div>
         </div>
       </div>

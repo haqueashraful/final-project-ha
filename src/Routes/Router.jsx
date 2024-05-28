@@ -7,14 +7,15 @@ import Ourshop from "../Pages/Shop/Shop/Ourshop";
 import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
 import DashLayout from "../Layout/DashLayout";
-import AdminHome from "../Dashboard/Admin/AdminHome";
 import AddItem from "../Dashboard/Admin/AddItem";
 import Reservation from "../Dashboard/User/Reservation";
 import PaymentHistory from "../Dashboard/User/PaymentHistory";
 import MyBookings from "../Dashboard/User/MyBookings";
 import MyCart from "../Dashboard/User/MyCart";
 import Reviews from "../Dashboard/User/Reviews";
-import UserHome from "../Dashboard/User/UserHome";
+import DashBoardHome from "../Dashboard/Dashboard/DashBoardHome";
+import AllUsers from "../Dashboard/Admin/AllUsers";
+import AdminRoute from "./AdminRoute";
 
 const Router = createBrowserRouter([
     {
@@ -45,11 +46,11 @@ const Router = createBrowserRouter([
         children: [
             {
                 path: "/dashboard",
-                element: <AdminHome />
+                element: <DashBoardHome />
             },
             {
                 path: "/dashboard/additem",
-                element: <AddItem />
+                element:<AdminRoute> <AddItem /> </AdminRoute>
             },
             {
                 path: "/dashboard/manageitem",
@@ -61,12 +62,12 @@ const Router = createBrowserRouter([
             },
             {
                 path: "/dashboard/allusers",
-                element: <AddItem />
+                element: <AdminRoute> <AllUsers /> </AdminRoute>
             },
-            {
-                path: "/dashboard/uerHome",
-                element: <UserHome />
-            },
+            // {
+            //     path: "/dashboard/uerHome",
+            //     element: <UserHome />
+            // },
             {
                 path: "/dashboard/reservation",
                 element: <Reservation />

@@ -1,4 +1,3 @@
-import React from "react";
 import useCart from "../../Hooks/useCart";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
@@ -19,8 +18,13 @@ const MyCart = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure.delete(`/carts/${id}`).then((res) => {
+            console.log(res.data);
+            if (res.data.deletedCount > 0) {
             refetch();
-            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            Swal.fire("Deleted!",`${id} deleted.`, "success");
+            }else{
+                Swal.fire("Error!",`${id} could not deleted.`, "error");
+            }
         });
       }
     });

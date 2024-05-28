@@ -1,6 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
+import useAdmin from "../../Hooks/useAdmin";
 
 const DashboardSide = () => {
+
+    const [isAdmin] = useAdmin();
     return (
         <div className="w-64 bg-[#D1A054] min-h-screen fixed">
             <div className="text-center">
@@ -10,8 +13,10 @@ const DashboardSide = () => {
 
             <div>
                 <div className="py-10">
-                    {/* <ul className="space-y-2 text-xl text-center">
-                        <li>
+                    <ul className="space-y-2 text-xl text-center">
+                   {
+                    isAdmin ? <>
+                         <li>
                             <NavLink to="/dashboard">Admin Home</NavLink>
                         </li>
                         <li>
@@ -26,11 +31,8 @@ const DashboardSide = () => {
                         <li>
                             <NavLink to="/dashboard/allusers">All User</NavLink>
                         </li>
-                      
-                    </ul> */}
-
-                    <ul className="space-y-2 text-xl text-center">
-                        <li>
+                    </> : <>
+                    <li>
                             <Link to="/dashboard">User Home</Link>
                         </li>
                         <li>
@@ -48,7 +50,14 @@ const DashboardSide = () => {
                         <li>
                             <Link to="/dashboard/mybookings">My Bookings</Link>
                         </li>
+                    </>
+                   }
+                      
                     </ul>
+
+                    {/* <ul className="space-y-2 text-xl text-center">
+                       
+                    </ul> */}
                 </div>
 
                 <div className="pt-10 border-t-2 ">
@@ -57,10 +66,10 @@ const DashboardSide = () => {
                             <Link to="/">Home</Link>
                         </li>
                         <li>
-                            <Link to="/menu">Our Menu</Link>
+                            <Link to="/ourmenu">Our Menu</Link>
                         </li>
                         <li>
-                            <Link to="/shop">Our Shop</Link>
+                            <Link to="/ourshop/salad">Our Shop</Link>
                         </li>
                         <li>
                             <Link to="/contactus">Contact Us</Link>

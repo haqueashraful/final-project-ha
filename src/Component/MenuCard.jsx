@@ -1,5 +1,4 @@
 const MenuCard = ({ item }) => {
-    console.log(item);
   const { name, recipe, image, price } = item;
   return (
     <div className="flex items-start justify-between gap-5">

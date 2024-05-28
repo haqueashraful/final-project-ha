@@ -13,30 +13,21 @@ import {
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import auth from "../firebase/firebase.config";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const MyContext = createContext();
 
 const MyContextProvider = ({ children }) => {
   const [load, setLoad] = useState(false);
-  const [myData, setMyData] = useState([]);
   const [user, setUser] = useState(null);
   const [loader, setLoader] = useState(true);
   const [stateLoader, setStateLoader] = useState(true);
+  const axiosPublic = useAxiosPublic();
   
 
   const googleProvider = new GoogleAuthProvider();
   const gitHubProvider = new GithubAuthProvider();
   const twitterProvider = new TwitterAuthProvider();
-
-  // useEffect(() => {
-  //   fetch("data.json")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setMyData(data);
-  //       setLoader(false);
-  //     })
-  //     .catch((error) => console.error("Error fetching data:", error));
-  // }, []);
 
   const profileUpdate = (name, photo_url) => {
     setLoad(true);
@@ -92,16 +83,33 @@ const MyContextProvider = ({ children }) => {
       });
   };
 
+
   useEffect(() => {
-    setLoader(true)
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setStateLoader(false)
+      if (currentUser) {
+        axiosPublic.post("/jwt", { email : currentUser?.email})
+          .then((response) => {
+            console.log(response.data.token);
+          })
+          .catch((error) => {
+            console.error("Failed to fetch token:", error);
+          })
+          .finally(() => {
+            setLoader(false);
+          });
+      } else {
+        axiosPublic.post("/logout", { email: currentUser?.email })
+        setLoader(false); // Only set loader to false, don't set user to null
+      }
     });
+  
     return () => {
       unsubscribe();
     };
-  }, []); 
+  }, [axiosPublic]);
+  
+ 
 
   const value = {
     setUser,
@@ -117,7 +125,6 @@ const MyContextProvider = ({ children }) => {
     setStateLoader,
     stateLoader,
     loader,
-    myData,
     user,
     load
   };

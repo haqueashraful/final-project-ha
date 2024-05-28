@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import bg from "../assets/others/authentication.png";
 import log from "../assets/others/authentication2.png";
+import SocialLogin from "../Component/SocialLogin";
 
 const Login = () => {
   const { logInUser } = useAuth();
@@ -14,8 +15,6 @@ const Login = () => {
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
-
-  console.log(from);
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -104,11 +103,7 @@ const Login = () => {
           <p className="text-center">Don't have an account? <Link to="/register">Register</Link></p>
           <div className="text-center my-4 space-y-4">
             <p>Or sign in with</p>
-            <ul className="flex justify-center items-center gap-5">
-              <li><FaGoogle className="text-3xl" /></li>
-              <li><FaFacebook className="text-3xl" /></li>
-              <li><FaGithub className="text-3xl" /></li>
-            </ul>
+           <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>

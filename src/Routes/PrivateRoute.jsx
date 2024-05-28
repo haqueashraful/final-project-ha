@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { MyContext } from "../Context/MyContext";
 import { Navigate, useLocation } from "react-router-dom";
-import Loading from "./Loading";
 import PropTypes from "prop-types";
+import Loading from "../Component/Loading";
 
 const PrivateRoute = ({ children }) => {
   const { user, stateLoader } = useContext(MyContext);
