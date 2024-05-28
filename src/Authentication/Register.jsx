@@ -1,7 +1,32 @@
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import bg from "../assets/others/authentication.png";
 import log from "../assets/others/authentication2.png";
+import useAuth from "../Hooks/useAuth";
+import { Link, useNavigate } from "react-router-dom";
 const Register = () => {
+  const {registerUser} = useAuth();
+  const navigate = useNavigate();
+
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    registerUser(email, password)
+    .then(result => {
+      const user = result.user;
+      console.log(user)
+      navigate('/')
+    })
+    .catch(error => {
+      console.log(error)
+    })
+
+    console.log(name, email, password);
+  };
   return (
     <div
       className="w-full min-h-screen p-28 overflow-hidden"
@@ -19,7 +44,7 @@ const Register = () => {
           <div>
             <h1 className="text-3xl font-bold text-center">Register</h1>
           </div>
-          <form action="#" className=" space-y-4">
+          <form onSubmit={handleRegister} action="#" className=" space-y-4">
                 {/* name */}
                 <div>
               <label className="block text-lg" htmlFor="name">
@@ -63,7 +88,7 @@ const Register = () => {
             <button className="border-b-4 border-black rounded-md px-5 py-2 hover:bg-black hover:text-white font-semibold">Register</button>
             </div>
           </form>
-          <p className="text-center">Already have an account</p>
+          <p className="text-center">Already have an account ? <Link to="/login">Login</Link></p>
 
           <div className="text-center my-4 space-y-4">
             <p>Or sign in with</p>
