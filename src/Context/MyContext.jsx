@@ -28,15 +28,15 @@ const MyContextProvider = ({ children }) => {
   const gitHubProvider = new GithubAuthProvider();
   const twitterProvider = new TwitterAuthProvider();
 
-  useEffect(() => {
-    fetch("data.json")
-      .then((response) => response.json())
-      .then((data) => {
-        setMyData(data);
-        setLoader(false);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+  // useEffect(() => {
+  //   fetch("data.json")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setMyData(data);
+  //       setLoader(false);
+  //     })
+  //     .catch((error) => console.error("Error fetching data:", error));
+  // }, []);
 
   const profileUpdate = (name, photo_url) => {
     setLoad(true);

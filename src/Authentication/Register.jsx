@@ -4,7 +4,7 @@ import log from "../assets/others/authentication2.png";
 import useAuth from "../Hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 const Register = () => {
-  const {registerUser} = useAuth();
+  const {registerUser, profileUpdate} = useAuth();
   const navigate = useNavigate();
 
 
@@ -12,6 +12,7 @@ const Register = () => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
+    const image = form.image.value;
     const email = form.email.value;
     const password = form.password.value;
 
@@ -19,6 +20,7 @@ const Register = () => {
     .then(result => {
       const user = result.user;
       console.log(user)
+      profileUpdate(name, image)
       navigate('/')
     })
     .catch(error => {
@@ -55,6 +57,20 @@ const Register = () => {
                 name="name"
                 id="name"
                 placeholder="Name"
+                className="w-full text-xl p-2 rounded-md"
+              />
+            </div>
+
+            {/* image */}
+            <div>
+              <label className="block text-lg" htmlFor="image">
+                Image
+              </label>
+              <input
+                type="text"
+                name="image"
+                id="image"
+                placeholder="Image"
                 className="w-full text-xl p-2 rounded-md"
               />
             </div>

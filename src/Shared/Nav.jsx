@@ -2,9 +2,15 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import icon from '../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png';
 import useAuth from '../Hooks/useAuth';
+import useCart from '../Hooks/useCart';
+
 
 const Nav = () => {
   const { user, logOutUser } = useAuth();
+
+  const [cart, refetch] = useCart();
+
+
   const handleLogOut = () => {
     logOutUser()
       .then(() => { })
@@ -23,12 +29,13 @@ const Nav = () => {
           <NavLink to='/ourmenu' className={({ isActive }) => `btn btn-ghost btn-sm rounded-btn ${isActive ? "text-orange-400" : ""}`}>Our menu</NavLink>
           <NavLink to='/ourshop/salad' className={({ isActive }) => `btn btn-ghost btn-sm rounded-btn ${isActive ? "text-orange-400" : ""}`}>Our shop</NavLink>
 
-          <Link to='/cart' className='ml-2'>
+          <Link to='/cart' className='ml-2 indicator'>
+          <span className="indicator-item badge badge-secondary">{cart.length}</span>
             <img className='w-10 h-8' src={icon} alt="Cart Icon" />
           </Link>
 
         {
-          user?.email ? <button onClick={handleLogOut} className='btn btn-ghost btn-sm rounded-btn'>Logout</button> : <NavLink to='/login' className='btn btn-ghost btn-sm rounded-btn'>Login</NavLink>
+          user?.email ? <button onClick={handleLogOut} className='btn btn-ghost btn-sm rounded-btn'>Logout <img className='w-10 h-8' src={user.photoURL}></img></button> : <NavLink to='/login' className='btn btn-ghost btn-sm rounded-btn'>Login</NavLink>
         }
         </div>
       </div>

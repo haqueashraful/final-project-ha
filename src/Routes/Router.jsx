@@ -9,6 +9,12 @@ import Register from "../Authentication/Register";
 import DashLayout from "../Layout/DashLayout";
 import AdminHome from "../Dashboard/Admin/AdminHome";
 import AddItem from "../Dashboard/Admin/AddItem";
+import Reservation from "../Dashboard/User/Reservation";
+import PaymentHistory from "../Dashboard/User/PaymentHistory";
+import MyBookings from "../Dashboard/User/MyBookings";
+import MyCart from "../Dashboard/User/MyCart";
+import Reviews from "../Dashboard/User/Reviews";
+import UserHome from "../Dashboard/User/UserHome";
 
 const Router = createBrowserRouter([
     {
@@ -44,6 +50,42 @@ const Router = createBrowserRouter([
             {
                 path: "/dashboard/additem",
                 element: <AddItem />
+            },
+            {
+                path: "/dashboard/manageitem",
+                element: <AddItem />
+            },
+            {
+                path: "/dashboard/managebookings",
+                element: <AddItem />
+            },
+            {
+                path: "/dashboard/allusers",
+                element: <AddItem />
+            },
+            {
+                path: "/dashboard/uerHome",
+                element: <UserHome />
+            },
+            {
+                path: "/dashboard/reservation",
+                element: <Reservation />
+            },
+            {
+                path: "/dashboard/history",
+                element: <PaymentHistory />
+            },
+            {
+                path: "/dashboard/mybookings",
+                element: <MyBookings />
+            },
+            {
+                path: "/dashboard/mycart",
+                element: <MyCart />
+            },
+            {
+                path: "/dashboard/reviews",
+                element: <Reviews />
             }
         ]
     },

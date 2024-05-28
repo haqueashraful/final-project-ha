@@ -10,7 +10,7 @@ const DashboardSide = () => {
 
             <div>
                 <div className="py-10">
-                    <ul className="space-y-2 text-xl text-center">
+                    {/* <ul className="space-y-2 text-xl text-center">
                         <li>
                             <NavLink to="/dashboard">Admin Home</NavLink>
                         </li>
@@ -27,6 +27,27 @@ const DashboardSide = () => {
                             <NavLink to="/dashboard/allusers">All User</NavLink>
                         </li>
                       
+                    </ul> */}
+
+                    <ul className="space-y-2 text-xl text-center">
+                        <li>
+                            <Link to="/dashboard">User Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/dashboard/reservation">Reservation</Link>
+                        </li>
+                        <li>
+                            <Link to="/dashboard/history">Payment History</Link>
+                        </li>
+                        <li>
+                            <Link to="/dashboard/mycart">My Cart</Link>
+                        </li>
+                        <li>
+                            <Link to="/dashboard/reviews">Add Reviews</Link>
+                        </li>
+                        <li>
+                            <Link to="/dashboard/mybookings">My Bookings</Link>
+                        </li>
                     </ul>
                 </div>
 

@@ -14,7 +14,7 @@ const MenuItem = ({ items, title, bg, subTitle }) => {
         ))}
       </div>
     <div  className="text-center my-5">
-    <Link to={`/ourshop/${title}`}>
+    <Link to={`/ourshop/${title ? title : "salad"}`}>
         <button className="border-b-4 border-black rounded-md px-5 py-2 hover:bg-black hover:text-white font-semibold">View Full Menu</button>
       </Link>
     </div>
