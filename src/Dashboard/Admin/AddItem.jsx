@@ -33,7 +33,7 @@ const AddItem = () => {
         const itemData = {
           name: data.name,
           category: data.category,
-          price: data.price,
+          price: parseFloat(data.price),
           recipe: data.recipe,
           image: imageUrl
         };

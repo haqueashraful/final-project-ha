@@ -51,7 +51,7 @@ const UpdateItem = () => {
       const updatedItem = {
         name: data.name,
         category: data.category,
-        price: data.price,
+        price: parseFloat(data.price),
         recipe: data.recipe,
         image: imageUrl
       };

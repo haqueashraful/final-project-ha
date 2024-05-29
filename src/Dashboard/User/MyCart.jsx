@@ -1,11 +1,14 @@
 import useCart from "../../Hooks/useCart";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const MyCart = () => {
   const [cart, refetch] = useCart();
-  const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+  const totalPrice = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
   const axiosSecure = useAxiosSecure();
+
+  const navigate = useNavigate();
   const removeFromCart = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -35,7 +38,7 @@ const MyCart = () => {
         <div className=" flex justify-between items-center">
           <h1>Items : {cart.length}</h1>
           <h1>Total Price : ${totalPrice}</h1>
-          <button className="btn btn-primary">Checkout</button>
+          <button onClick={() => navigate('/dashboard/payment')}  disabled={cart.length === 0} className='border-b-4 text-[#BB8506] border-[#BB8506] rounded-md px-5 py-2 hover:bg-black font-semibold'>Checkout</button>
         </div>
 
         <div>

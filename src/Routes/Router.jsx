@@ -18,6 +18,8 @@ import AllUsers from "../Dashboard/Admin/AllUsers";
 import AdminRoute from "./AdminRoute";
 import ManageItem from "../Dashboard/Admin/ManageItem";
 import UpdateItem from "../Dashboard/Admin/UpdateItem";
+import Payment from "../Dashboard/User/Payment";
+import PrivateRoute from "./PrivateRoute";
 
 const Router = createBrowserRouter([
     {
@@ -44,55 +46,59 @@ const Router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <DashLayout />,
+        element: <PrivateRoute><DashLayout/></PrivateRoute>,
         children: [
             {
                 path: "/dashboard",
-                element: <DashBoardHome />
+                element: <DashBoardHome/>
             },
             {
-                path: "/dashboard/additem",
+                path: "additem",
                 element:<AdminRoute> <AddItem /> </AdminRoute>
             },
             {
-                path: "/dashboard/manageitem",
+                path: "manageitem",
                 element: <AdminRoute><ManageItem /></AdminRoute>
             },
             {
-                path: "/dashboard/managebookings",
+                path: "managebookings",
                 element: <AddItem />
             },
             {
-                path: "/dashboard/allusers",
+                path: "allusers",
                 element: <AdminRoute> <AllUsers /> </AdminRoute>
             },
             {
-                path: "/dashboard/update/:id",
+                path: "update/:id",
                 element: <UpdateItem />
             },
             // {
-            //     path: "/dashboard/uerHome",
+            //     path: "uerHome",
             //     element: <UserHome />
             // },
             {
-                path: "/dashboard/reservation",
+                path: "reservation",
                 element: <Reservation />
             },
             {
-                path: "/dashboard/history",
+                path: "history/:id",
                 element: <PaymentHistory />
             },
             {
-                path: "/dashboard/mybookings",
+                path: "mybookings",
                 element: <MyBookings />
             },
             {
-                path: "/dashboard/mycart",
+                path: "mycart",
                 element: <MyCart />
             },
             {
-                path: "/dashboard/reviews",
+                path: "reviews",
                 element: <Reviews />
+            },
+            {
+                path: "payment",
+                element: <Payment />
             }
         ]
     },
