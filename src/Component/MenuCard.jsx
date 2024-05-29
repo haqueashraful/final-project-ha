@@ -2,7 +2,7 @@ const MenuCard = ({ item }) => {
   const { name, recipe, image, price } = item;
   return (
     <div className="flex items-start justify-between gap-5">
-      <div className="w-24 h-24 overflow-hidden" style={{ borderRadius: " 0px 200px 200px 200px",}}>
+      <div className="overflow-hidden" style={{ borderRadius: " 0px 200px 200px 200px", objectFit: "cover" , width: "100px", height: "100px" }}>
         <img
           style={{ objectFit: "cover", width: "100%", height: "100%" }}
           src={image}

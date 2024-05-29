@@ -3,6 +3,7 @@ import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useCart from "../Hooks/useCart";
+import useAdmin from "../Hooks/useAdmin";
 
 const Card = ({ item }) => {
   const { user } = useAuth();
@@ -11,9 +12,13 @@ const Card = ({ item }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const axiosSecure = useAxiosSecure();
+  const [isAdmin] = useAdmin();
 
   const handleAddToCart = (item) => {
     console.log(item);
+    if(isAdmin){
+      return Swal.fire('sorry', 'you are not allowed to add item', 'warning')
+    }
 
     if (user?.email) {
       const cartItem = {
@@ -47,11 +52,6 @@ const Card = ({ item }) => {
         confirmButtonText: "Yes, login in!",
       }).then((result) => {
         if (result.isConfirmed) {
-          // Swal.fire({
-          //   title: "Deleted!",
-          //   text: "Your file has been deleted.",
-          //   icon: "success"
-          // });
           navigate("/login", { state: { from: location } });
         }
       });
@@ -59,8 +59,11 @@ const Card = ({ item }) => {
   };
   return (
     <div>
-      <div className="w-full overflow-hidden bg-[#F3F3F3]">
-        <img className="object-cover w-full" src={image} alt={name} />
+      <div className="w-full overflow-hidden bg-[#F3F3F3]  relative">
+        <img className="object-cover w-full min-h-[300px] max-h-[300px]" src={image} alt={name} />
+       
+        <p className="text-center absolute rounded-md px-3 py-1 top-2 left-2 z-auto bg-black text-white">{price}</p>
+       
       </div>
       <div className="text-center space-y-5 px-5 py-5 flex flex-col justify-between">
         <h1 className="text-xl font-bold">{name}</h1>

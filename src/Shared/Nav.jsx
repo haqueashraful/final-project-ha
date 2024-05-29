@@ -3,17 +3,20 @@ import logo from '../assets/logo.png';
 import icon from '../assets/icon/151-1511569_cart-notifications-free-shopping-cart-favicon-hd-png-removebg-preview.png';
 import useAuth from '../Hooks/useAuth';
 import useCart from '../Hooks/useCart';
+import useAxiosPublic from '../Hooks/useAxiosPublic';
 
 
 const Nav = () => {
   const { user, logOutUser } = useAuth();
-
+  const axiosPublic = useAxiosPublic();
   const [cart, refetch] = useCart();
 
 
   const handleLogOut = () => {
     logOutUser()
-      .then(() => { })
+      .then(() => { 
+        axiosPublic.post("/logout")
+      })
       .catch(error => console.error(error));
   }
   return (
@@ -29,7 +32,7 @@ const Nav = () => {
           <NavLink to='/ourmenu' className={({ isActive }) => `btn btn-ghost btn-sm rounded-btn ${isActive ? "text-orange-400" : ""}`}>Our menu</NavLink>
           <NavLink to='/ourshop/salad' className={({ isActive }) => `btn btn-ghost btn-sm rounded-btn ${isActive ? "text-orange-400" : ""}`}>Our shop</NavLink>
 
-          <Link to='/cart' className='ml-2 indicator'>
+          <Link to='/dashboard/mycart' className='ml-2 indicator'>
           <span className="indicator-item badge badge-secondary">{cart.length}</span>
             <img className='w-10 h-8' src={icon} alt="Cart Icon" />
           </Link>

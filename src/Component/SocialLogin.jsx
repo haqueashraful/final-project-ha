@@ -14,12 +14,12 @@ const SocialLogin = () => {
         signInWithGoogle()
           .then((result) => {
             const user = result.user;
-            axiosPublic.post("/users", { name: user.displayName, email: user.email })
+            axiosPublic.post("/users", { name: user.displayName, email: user.email, role: 'user' })
               .then((res) => {
                 Swal.fire({
                   position: "top-end",
                   icon: "success",
-                  title: `${res.data.message}`,
+                  title: "Login successfully",
                   showConfirmButton: false,
                   timer: 1500,
                 })

@@ -87,6 +87,7 @@ const MyContextProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      console.log(currentUser);
       if (currentUser) {
         axiosPublic.post("/jwt", { email : currentUser?.email})
           .then((response) => {
@@ -99,7 +100,7 @@ const MyContextProvider = ({ children }) => {
             setLoader(false);
           });
       } else {
-        axiosPublic.post("/logout", { email: currentUser?.email })
+        axiosPublic.post("/logout")
         setLoader(false); // Only set loader to false, don't set user to null
       }
     });

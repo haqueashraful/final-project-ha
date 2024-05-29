@@ -9,12 +9,11 @@ import CardSection from "../../../Component/CardSection";
 import { useParams } from "react-router-dom";
 
 const Ourshop = () => {
-    const categories = ["salad", "pizza", "dessert", "soup", "drinks"];
-    const {category} = useParams();
-    const initialIndex = categories.indexOf(category);
+  const categories = ["salad", "pizza", "dessert", "soup", "drinks"];
+  const { category } = useParams();
+  const initialIndex = categories.indexOf(category);
   const [tabIndex, setTabIndex] = useState(initialIndex);
   const [menu] = useMenu();
-    console.log(category)
   const dessert = menu.filter((item) => item.category === "dessert");
   const pizza = menu.filter((item) => item.category === "pizza");
   const salad = menu.filter((item) => item.category === "salad");
@@ -38,19 +37,19 @@ const Ourshop = () => {
             <Tab>Drinks</Tab>
           </TabList>
           <TabPanel>
-              <CardSection items={salad}  />
+            <CardSection items={salad} />
           </TabPanel>
           <TabPanel>
-              <CardSection items={pizza}  />
+            <CardSection items={pizza} />
           </TabPanel>
           <TabPanel>
-              <CardSection items={soup}  />
+            <CardSection items={soup} />
           </TabPanel>
           <TabPanel>
-              <CardSection items={dessert}  />
+            <CardSection items={dessert} />
           </TabPanel>
           <TabPanel>
-              <CardSection items={drinks}  />
+            <CardSection items={drinks} />
           </TabPanel>
         </Tabs>
       </div>

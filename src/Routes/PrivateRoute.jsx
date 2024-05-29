@@ -8,8 +8,6 @@ const PrivateRoute = ({ children }) => {
   const { user, loader } = useContext(MyContext);
   const location = useLocation();
 
-  console.log(user, loader);
-
   if (loader) {
     return <Loading />;
   }

@@ -5,7 +5,7 @@ import Loading from "../Component/Loading";
 
 const AdminRoute = ({children}) => {
     const [isAdmin, isPending] = useAdmin();
-    const { user, stateLoader,loader } = useAuth();
+    const { user, loader } = useAuth();
     const location = useLocation();
   
     if (isPending || loader) {

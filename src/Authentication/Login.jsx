@@ -8,7 +8,7 @@ import log from "../assets/others/authentication2.png";
 import SocialLogin from "../Component/SocialLogin";
 
 const Login = () => {
-  const { logInUser } = useAuth();
+  const { logInUser, setLoader } = useAuth();
   const captchaInputRef = useRef(null);
   const navigate = useNavigate();
   const [disable, setDisable] = useState(true);
@@ -32,7 +32,8 @@ const Login = () => {
         .then((result) => {
           const user = result.user;
           console.log(user);
-          navigate(from, { replace: true });
+          navigate("/", { replace: true });
+          setLoader(false);
         })
         .catch((error) => {
           console.log(error);
