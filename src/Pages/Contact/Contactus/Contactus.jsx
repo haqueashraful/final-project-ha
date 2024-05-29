@@ -14,7 +14,7 @@ const Contactus = () => {
       />
 
       <div className="px-28">
-        <Title headign="OUR LOCATION" subHeading="Visit Us" />
+        <Title heading="OUR LOCATION" subHeading="Visit Us" />
         <div className="flex justify-evenly items-center gap-5">
           <div className="border w-full">
             <div className="w-full bg-[#D1A054] text-white py-2 text-center">
@@ -51,7 +51,7 @@ const Contactus = () => {
           </div>
         </div>
 
-        <Title headign="Contact Form" subHeading="Send Us A Message" />
+        <Title heading="Contact Form" subHeading="Send Us A Message" />
 
      <form>
      <div className="bg-[#F3F3F3] p-10">

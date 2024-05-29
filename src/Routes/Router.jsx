@@ -16,6 +16,8 @@ import Reviews from "../Dashboard/User/Reviews";
 import DashBoardHome from "../Dashboard/Dashboard/DashBoardHome";
 import AllUsers from "../Dashboard/Admin/AllUsers";
 import AdminRoute from "./AdminRoute";
+import ManageItem from "../Dashboard/Admin/ManageItem";
+import UpdateItem from "../Dashboard/Admin/UpdateItem";
 
 const Router = createBrowserRouter([
     {
@@ -54,7 +56,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: "/dashboard/manageitem",
-                element: <AddItem />
+                element: <AdminRoute><ManageItem /></AdminRoute>
             },
             {
                 path: "/dashboard/managebookings",
@@ -63,6 +65,10 @@ const Router = createBrowserRouter([
             {
                 path: "/dashboard/allusers",
                 element: <AdminRoute> <AllUsers /> </AdminRoute>
+            },
+            {
+                path: "/dashboard/update/:id",
+                element: <UpdateItem />
             },
             // {
             //     path: "/dashboard/uerHome",

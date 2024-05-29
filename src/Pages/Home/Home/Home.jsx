@@ -23,7 +23,7 @@ const Home = () => {
 
       <div>
         <Title
-          headign="ORDER ONLINE"
+          heading="ORDER ONLINE"
           subHeading="From 11:00am to 10:00pm"
         ></Title>
         <Slider />
@@ -55,7 +55,7 @@ const Home = () => {
       {/* check it out */}
 
       <div>
-        <Title headign="From Our Menu" subHeading="Check it Out"></Title>
+        <Title heading="From Our Menu" subHeading="Check it Out"></Title>
 
         <div className="my-10">
           <MenuItem items={popular}></MenuItem>
@@ -74,7 +74,7 @@ const Home = () => {
 
       <div>
         <div>
-          <Title headign="Chef Recommended" subHeading="Should Try"></Title>
+          <Title heading="Chef Recommended" subHeading="Should Try"></Title>
         </div>
 
         <div className="my-10">
@@ -96,7 +96,7 @@ const Home = () => {
       >
         <div className="bg-black/60  px-28 my-8  w-full h-full ">
           <div  className="!text-white" >
-            <Title headign="Featured Item" subHeading="Don't Miss"></Title>
+            <Title heading="Featured Item" subHeading="Don't Miss"></Title>
           </div>
 
           <div className="flex justify-center items-center gap-9">
@@ -126,7 +126,7 @@ const Home = () => {
 
       <section>
         <Title
-          headign="Testimonial"
+          heading="Testimonial"
           subHeading="What Our Client Say"
         ></Title>
 

@@ -7,7 +7,7 @@ const DashLayout = () => {
                 <div>
                     <DashboardSide />
                 </div>
-                <div className=" flex-1 ml-64 w-full">
+                <div className=" flex-1 ml-64 w-full px-28">
                     <Outlet />
                 </div>
         </div>

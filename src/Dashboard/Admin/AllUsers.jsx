@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import Title from "../../Component/Title";
 
 const AllUsers = () => {
     const axiosSecure = useAxiosSecure()
@@ -63,6 +64,7 @@ const AllUsers = () => {
     }
     return (
         <div >
+            <Title heading={"All Users"} subHeading={"Manage all users"}></Title>
          <div className="text-center text-3xl flex justify-evenly">
          <h1>All Users</h1>
             <p>{user?.length}</p>

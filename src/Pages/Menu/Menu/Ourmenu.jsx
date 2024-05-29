@@ -22,11 +22,11 @@ const Ourmenu = () => {
         bg={top}
       />
       <div className="my-10 space-y-10">
-        <Title headign="Today's Offer" subHeading="Don't Miss" />
+        <Title heading="Today's Offer" subHeading="Don't Miss" />
         <MenuItem items={offerd} />
       </div>
       <div className="my-10 space-y-10">
-        <Title headign="Popular Items" subHeading="Check it Out" bg={top}/>
+        <Title heading="Popular Items" subHeading="Check it Out" bg={top}/>
         <MenuItem
           items={popular}
         />
