@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useCart from "../../Hooks/useCart";
 import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const PaymentForm = () => {
     const {user} = useAuth();
@@ -11,15 +13,17 @@ const PaymentForm = () => {
     const stripe = useStripe();
     const elements = useElements();
     const axiosSecure = useAxiosSecure();
-    const [cart] = useCart();
-
+    const [cart, refetch] = useCart();
     const total = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+    const navigate = useNavigate();
 
     useEffect(() => {
+      if(total > 0) {
         axiosSecure.post('/create-payment-intent', {price: total}).then((res) => {
-            console.log(res.data.clientSecret);
-            setClientSecret(res.data.clientSecret);
-        })
+          console.log(res.data.clientSecret);
+          setClientSecret(res.data.clientSecret);
+      })
+      }
     }, [axiosSecure, total]);
 
   const handlePayment = async (event) => {
@@ -69,7 +73,15 @@ const PaymentForm = () => {
         // save payment information to the server
 
         if(paymentIntent.status === 'succeeded') {
-
+          // refetch();
+          navigate('/dashboard/mycart')
+             Swal.fire({
+                 position: 'center',
+                 icon: 'success',
+                 title: 'Payment Successful',
+                 showConfirmButton: false,
+                 timer: 1500
+             })
             const payment ={
                 email: user?.email,
                 transactionId: paymentIntent.id,
@@ -79,11 +91,12 @@ const PaymentForm = () => {
                 menuItemIds: cart.map(item => item.menuItemId),
                 status: 'pending'
             }
-
-            
+           
+           // save data to the server
            const result = await axiosSecure.post('/payments', payment)
-
-           console.log(result.data)
+           if(result.data.result.insertedId){
+            refetch();
+           }
         }
       }
   };

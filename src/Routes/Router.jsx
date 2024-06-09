@@ -20,6 +20,7 @@ import ManageItem from "../Dashboard/Admin/ManageItem";
 import UpdateItem from "../Dashboard/Admin/UpdateItem";
 import Payment from "../Dashboard/User/Payment";
 import PrivateRoute from "./PrivateRoute";
+import ManageBookings from "../Dashboard/Admin/ManageBookings";
 
 const Router = createBrowserRouter([
     {
@@ -62,7 +63,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: "managebookings",
-                element: <AddItem />
+                element: <ManageBookings />
             },
             {
                 path: "allusers",
@@ -81,7 +82,7 @@ const Router = createBrowserRouter([
                 element: <Reservation />
             },
             {
-                path: "history/:id",
+                path: "history",
                 element: <PaymentHistory />
             },
             {

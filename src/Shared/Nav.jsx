@@ -24,6 +24,7 @@ const Nav = () => {
       <div className="navbar bg-black/50 text-white absolute z-10 top-0 w-full">
         <div className="navbar-start">
           <img className='w-14 h-14' src={logo} alt="Logo" />
+          <h1>DineCraft</h1>
         </div>
         <div className="navbar-end flex items-center">
           <NavLink to='/' className={({ isActive }) => `btn btn-ghost btn-sm rounded-btn ${isActive ? "text-orange-400" : ""}`}>Home</NavLink>

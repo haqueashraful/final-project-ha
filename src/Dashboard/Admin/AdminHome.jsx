@@ -1,6 +1,19 @@
 import { FaWallet } from "react-icons/fa6";
+import useAuth from "../../Hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const AdminHome = () => {
+    const {user } = useAuth();
+    const axiosSecure = useAxiosSecure();
+
+    const {data : stats = {}} = useQuery({
+        queryKey: ['admin-stats'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/admin-stats');
+            return res.data;
+        }
+    })
     return (
         <div className="p-4">
             <h1 className="text-5xl uppercase">Hi, Welcome Back!</h1>
@@ -12,7 +25,7 @@ const AdminHome = () => {
                          <FaWallet className="text-5xl text-white" />
                     </div>
                     <div className="text-white">
-                        <h1 className="text-xl font-bold">100</h1>
+                        <h1 className="text-xl font-bold">{stats?.revenue}</h1>
                         <h1>Revenue</h1>
                     </div>
                 </div>
@@ -22,7 +35,7 @@ const AdminHome = () => {
                          <FaWallet className="text-5xl text-white" />
                     </div>
                     <div className="text-white">
-                        <h1 className="text-xl font-bold">100</h1>
+                        <h1 className="text-xl font-bold">{stats?.users}</h1>
                         <h1>Customers</h1>
                     </div>
                 </div>
@@ -33,7 +46,7 @@ const AdminHome = () => {
                          <FaWallet className="text-5xl text-white" />
                     </div>
                     <div className="text-white">
-                        <h1 className="text-xl font-bold">100</h1>
+                        <h1 className="text-xl font-bold">{stats?.products}</h1>
                         <h1>Products</h1>
                     </div>
                 </div>
@@ -44,7 +57,7 @@ const AdminHome = () => {
                          <FaWallet className="text-5xl text-white" />
                     </div>
                     <div className="text-white">
-                        <h1 className="text-xl font-bold">100</h1>
+                        <h1 className="text-xl font-bold">{stats?.orders}</h1>
                         <h1>Orders</h1>
                     </div>
                 </div>
